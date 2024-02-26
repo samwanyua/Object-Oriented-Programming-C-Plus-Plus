@@ -11,6 +11,7 @@ class Person{
         this ->first = first;
    }
 
+
     void setLastName(std::string last){ 
         this ->last = last;
    }
@@ -23,8 +24,45 @@ class Person{
     void printFullName(){
         std::cout << first << " " <<last << std::endl;
     }
+
+    //constructor
+    Person(std::string first, std::string last): first(first), last(last){
+    // Person() = default;
+
+    }
+        /* same as
+        Person(std::string first, std::string last){
+            this ->first = first;
+            this ->last = last;
+        }
+        */
+    
 };
 
+//inheritance
+class Employee: public Person{
+    public:
+    Employee(std::string first, std::string last) : Person(first,last){};
+
+};
+
+
+int main(){
+
+    Person p("Priscilla", "Kamau" );
+    std::cout << p.getName() <<std::endl; //using getters
+
+
+    Person p1("Ken","Karanja");
+    std::cout << p1.getName() <<std::endl; 
+
+    // Person p3;
+
+    Employee e1("Eden", "Hazard");
+    e1.printFullName();
+
+    return 0;
+}
 /*
 class -describes the structure
 object - a specific example of that structure (instance)
@@ -34,34 +72,6 @@ creating objects from a class - is instantiating
 methods - functions defined inside a class
 */
 
-int main(){
-
-    // Person person1;
-    // person1.first = "Caleb";
-    // person1.last = "Cate";
-
-    // person1.printFullName();
-
-    // Person p2;
-    // p2.first = "Sam";
-    // p2.last = "Wanyua";
-
-    // p2.printFullName();
-
-    Person p;
-    p.setFirstName("Priscilla");
-    p.setLastName("Kamau");
-    p.printFullName();
-    std::cout << p.getName() <<std::endl; //using getters
-
-
-    Person p1;
-    p1.setFirstName("Ken");
-    p1.setLastName("Karanja");
-    p1.printFullName();
-
-    return 0;
-}
 
 /*
 Pillars of OOP:
