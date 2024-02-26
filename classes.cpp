@@ -1,20 +1,57 @@
 #include <iostream>
-
+// #include <string>
 using namespace std;
 
-/* Access modifiers:
-    - Public - accessible outside class
-    - Private (default) - not accessible outside class
-    - Protected - has rules to it 
+
+/* 
+Abstraction is a fundamental concept in computer science and software engineering 
+that involves simplifying complex systems by modeling classes based on essential 
+properties and behaviors while ignoring or hiding unnecessary details. 
+It is one of the key principles of Object-Oriented Programming (OOP).
+
+Only the essential features and behaviors of an object or system are represented, 
+while non-essential details are omitted. This helps in understanding and managing 
+complex systems by focusing on what's important.
+
+Hiding complexity from the user for example the logic behind taking a photo
 
 */
-class Emyployee{
-    public:
-        string name;
-        string company;
-        int age;
 
-    //class method/function
+class AbstractEmployee{
+    public:
+    // Pure virtual function/ an abstract function
+    virtual void AskForPromotion() = 0;
+};
+
+class Employee:  AbstractEmployee {
+private: 
+    std::string name;  
+    std::string company;
+    int age;
+public:
+//setter
+    void setName(string employeeName){
+        name = employeeName;
+    }
+    //getter
+    string getName(){
+        return name;
+    }
+    void setCompany(string employeeCompany){
+        company = employeeCompany;
+    }
+    string getCompany(){
+        return company;
+    }
+
+    void setAge(int employeeAge){
+        if(employeeAge >= 18)
+        age = employeeAge;
+    }
+    int getAge(){
+        return age;
+    }
+
     void introduceYourself(){
         cout << "Name : " << name << endl;
         cout << "Company : " << company << endl;
@@ -22,10 +59,20 @@ class Emyployee{
     }
 
     //constructor - doesn't have a return type, has the same name as the class it belong to, it must be public
-    Emyployee(string employeeName, string employeeCompany, int employeeAge){
+    Employee(string employeeName, string employeeCompany, int employeeAge){
         name = employeeName;
         company = employeeCompany;
         age = employeeAge;
+    }
+
+    void AskForPromotion(){
+        if(age > 30){
+            cout << name << " got promoted!" << endl;
+        }
+        else{
+            cout << name << " , sorry, no promotion for you!" << endl;
+
+        }
     }
 
 
@@ -33,25 +80,18 @@ class Emyployee{
 
 int main(){
 
-    //an object
-    // Emyployee employee1;
-    // employee1.name = "Sam Wanyua";
-    // employee1.company = "Spotify";
-    // employee1.age = 24;
+    Employee employee3("Sam", "Spotify", 24);
+    // employee3.introduceYourself(); //gives all the details
 
-    // cout << employee1.name << endl;
+    Employee employee4("Wanyua", "Google", 44);
+    // employee4.introduceYourself();
 
+    // employee3.setAge(34);
+    // cout << employee3.getName() << " is " << employee3.getAge() << " years old" << endl;
 
-    // employee1.introduceYourself(); // gives full details name, company, age
-    // employee1.introduceYourself(); // repetition 
-
-    Emyployee employee3("Sam", "Spotify", 24);
-    cout << employee3.company << endl;
-    employee3.introduceYourself(); //gives all the details
-
-    Emyployee employee4("Wanyua", "Google", 24);
-    employee4.introduceYourself();
-
+    
+    employee3.AskForPromotion();
+    employee4.AskForPromotion();
 
 
 
