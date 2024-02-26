@@ -2,19 +2,53 @@
 
 using namespace std;
 
-/* Access modifiers:
-    - Public - accessible outside class
-    - Private (default) - not accessible outside class
-    - Protected - has rules to it 
+/* 
+In C++, encapsulation is like putting your data and the functions that 
+work with the data inside a protective box (class). You control who gets 
+access to the data and how they interact with it. This helps in creating 
+more organized and secure code, and it's one of the fundamental principles 
+of Object-Oriented Programming (OOP).
 
+Encapsulation is the bundling of data and methods that operate on the data 
+within a single unit, i.e., a class. It helps hide the internal details of 
+the class and exposes only what is necessary.
 */
-class Emyployee{
-    public:
-        string name;
-        string company;
-        int age;
 
-    //class method/function
+//getters and setters
+
+
+class Employee{
+private: 
+    string name;
+    string company;
+    int age;
+public:
+//setter
+    void setName(string employeeName){
+        name = employeeName;
+    }
+    //getter
+    string getName(){
+        return name;
+    }
+
+
+    void setCompany(string employeeCompany){
+        company = employeeCompany;
+    }
+    string getCompany(){
+        return company;
+    }
+
+    void setAge(int employeeAge){
+        if(employeeAge >= 18)
+        age = employeeAge;
+
+    }
+    int getAge(){
+        return age;
+    }
+
     void introduceYourself(){
         cout << "Name : " << name << endl;
         cout << "Company : " << company << endl;
@@ -22,7 +56,7 @@ class Emyployee{
     }
 
     //constructor - doesn't have a return type, has the same name as the class it belong to, it must be public
-    Emyployee(string employeeName, string employeeCompany, int employeeAge){
+    Employee(string employeeName, string employeeCompany, int employeeAge){
         name = employeeName;
         company = employeeCompany;
         age = employeeAge;
@@ -33,24 +67,16 @@ class Emyployee{
 
 int main(){
 
-    //an object
-    // Emyployee employee1;
-    // employee1.name = "Sam Wanyua";
-    // employee1.company = "Spotify";
-    // employee1.age = 24;
-
-    // cout << employee1.name << endl;
-
-
-    // employee1.introduceYourself(); // gives full details name, company, age
-    // employee1.introduceYourself(); // repetition 
-
-    Emyployee employee3("Sam", "Spotify", 24);
-    cout << employee3.company << endl;
+    Employee employee3("Sam", "Spotify", 24);
     employee3.introduceYourself(); //gives all the details
 
-    Emyployee employee4("Wanyua", "Google", 24);
+    Employee employee4("Wanyua", "Google", 24);
     employee4.introduceYourself();
+
+    employee3.setAge(34);
+    cout << employee3.getName() << " is " << employee3.getAge() << " years old" << endl;
+
+    
 
 
 
